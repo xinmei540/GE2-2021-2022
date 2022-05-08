@@ -36,7 +36,123 @@
 - Week 13 - CA Submission - 50%
 - End of year online test - 30%
 
+## Week 12 - Obstacle Avoidance & Lab Test & ECS Boids
+- Check out Avoidance scene
+- How are the feelers calculated?
+- What direction do they point?
+- How many are there? Whys this number?
+- How does the behaviour handle holes in the colliders?
+- Does the speed of the boid matter?
+- What direction is the force generated?
+- WHat alternatives are there to this?
+- How does the behaviour avoid certain obstacles while ignoring others?
+- How often are the feelers calculated and why?
+- How does the behaviour take priority over other behaviours?
+- How would you improve the behaviour?
+- How does it improve on Craig Reynolds avoidance behaviours?
+
+
+Have a look at the PureECSScene in [this repo](http://github.com/skooter500/ECS2020) and answer the following questions:
+
+1. What are Entities, Components, Systems and Jobs?
+5. What is the purpose of the class BoidBootstrap?
+2. In the previous examples, we explored two approaches to creating Entities. Describe them. Which approach was used in the PureECSScene Scene?
+3. How many systems are there running in PureECSScene? What are they and what do they do?
+4. In the previous examples we looked at two different types of jobs. What were they and what were they for? 
+4. BoidSystem schedules IJobEntityBatch jobs. What are these and how does this approach differ from using Entities.ForEach? 
+4. How do these jobs selects Entities to iterate over? How are the Components on these Entities accessed? 
+6. What is a Native Container? Give some examples. What Native Containers does the BoidSystem create and what is their purpose?
+7. What Jobs does the BoidSystem schedule and in what order. Is this order significant?
+8. PartitionSpaceJob uses an algorithm called Cell Space Partitioning. How can this algorithm reduce the computational complexity the Flocking?
+9. What is the limitation of this algorithm?
+9. How are Boids assigned cells?
+10. PartitionSpaceJob uses a NativeMultiHashMap. What is the purpose of this data structure? What is the computational complexity of retrieving a value from a key in this data structure?
+10. How do Boids access the positions and rtotations of other Boids?
+11. In CountNeighboursJob, how does the algorithm determine how many cells are surrounding a boid that it needs to check for neighbours?
+12. What is the design pattern for retrieving all the values that match a given key in a NativeMultiHashMapIterator?
+13. Where does the algorithm store the neighbours for each Boid?
+14. What happens if a Boid has too many neighbours?
+15. In SeperationJob, what can cause the force to be NAN? How does the code check for this?
+16. How does Cohesion work?
+17. In AlignmentJob how are the forward vectors for each boid calculated?
+17. How is the desired forward vector calculated?
+18. How is the force generated?
+18. What algorithm does BoidJob use to combine the forces from the various behaviours together?
+19. How is the Boids rotation evaluated?
+20. In SpineSystem, what is the purpose of the WithNativeDisableParallelForRestriction annotation on the Entities.ForEach lambda?
+21. What jobs does SpineSystem schedule and what do they do?
+21. What parameters control the damping on the spine and what effect will changing these parameters have on the spines?
+21. What Native Containers does this job create?
+22. In HeadAndtailsSystem, what controls the speed of the procedural animation?
+22. How does the Head Animation work? Draw a diagram. What Unity API call is this system similar to?
+
+## Week 11 - ECS Creational Strategies - Psytrance Spiral generator
+
+- When are the entities created?
+- How do the entities get the mesh assigned?
+- What is the purpose of ParticleController and ParticleSystem?
+- What components does entity have and what is their purpose?
+- How does an entity get components?
+- Why does the onUpdate method copy fields into local variables?
+- What is a NativeArray? Why not use a normal array?
+- What does ref mean?
+- What is the difference between scale and NonUniformScale?
+- What does WithNativeDisableParallelForRestriction mean?
+- What is the difference between Schedule and ScheduleParalell?
+- What is the purpose of the entityInQueryIndex parameter?
+- What is a lambda?
+- Why does the function use math.cos instead of Math.Cos?
+
+## Week 10 - ECS - Perlin Noise Voxel Terrain
+- [Tuesday Class](https://tudublin-my.sharepoint.com/:v:/g/personal/bryan_duggan_tudublin_ie/EY8PqhkjMTBOlskEMGisvf0BMO7L2EbiubV6SiBEb8s2CA?e=99rAcx)
+- [Wednesday Class](https://tudublin-my.sharepoint.com/:v:/g/personal/bryan_duggan_tudublin_ie/ESpjH6aLwV9CiMfqH95R1RgB59CgIloCQKQIvat4EHPYng?e=tn8hzU)
+
+## Week 9 - ECS - Introduction
+- No Recording of Tuesday Class :-(
+- [Wednesday Class](https://tudublin-my.sharepoint.com/:v:/g/personal/bryan_duggan_tudublin_ie/EXXB0BqVyWlJt1AvccQCrqcBKAjib2PcwQRQs64BsToQkA?e=y9VDJ8)
+- [Slides about ECS](https://tudublin-my.sharepoint.com/:p:/g/personal/bryan_duggan_tudublin_ie/Eer4jfOpwlVFrD5tCY8MmacB8wxGtg7fubOzOJz7aOBwTQ?e=rIPSPH)
+
+## Week 8 - Review Week
+## Lab
+
+You can find the Finite State Machine code in repo! Check it out and see if you can incorporate it into your assignment 
+
+## Week 7
+- [Tuesday Class - Finite State Machines](https://tudublin-my.sharepoint.com/:v:/g/personal/bryan_duggan_tudublin_ie/EQ28znAiANdEh07bdKBafsQBpCsgZ26pssl4kUYdxx7_UA?e=cPFjpg)
+- [Wednesday Class - Finite State Machine Design Pattern](https://tudublin-my.sharepoint.com/:v:/g/personal/bryan_duggan_tudublin_ie/EUaae4M6jwtJqg8obHoEJgUB2srzxTWSPgKJf3dzBOjorA?e=Nm84rj)
+- [Slides about FSM's](https://tudublin-my.sharepoint.com/:p:/g/personal/bryan_duggan_tudublin_ie/EZeIQO50Y0FAvG3xQrAmuYIBamLVqbMGNQohhxwwnD64MA?e=kBf15L)
+
+
+### Lab
+I put the code for all the steering behaviours in seperate classes into the repo. There are the following Steering Behaviours:
+
+- Seek
+- Arrive
+- Pursue
+- Offset Pursue
+- Flee
+- Obstacle Avoidance
+- Jitter Wander
+- Noise Wander
+- Harmonic
+
+There is also a scene called Components that shows how to add the behaviours to a Boid
+
+In todays lab, you can try and attach some of these behaviours to the Boids in your assignment
+
+## Week 6
+- [Tuesday Class - SOLID Principles](https://tudublin-my.sharepoint.com/:v:/g/personal/bryan_duggan_tudublin_ie/EZgbMeI4JbhBsdy6EPt6NhwBB74x1Ohlk7ydzxOZhrmf0A?e=gSOklc)
+- [Wednesday Class - WPTRS](https://tudublin-my.sharepoint.com/:v:/g/personal/bryan_duggan_tudublin_ie/EUdZJZxfthVGlkSdDRQA55gB0rOwJRTHoPOqWSJkQ7KksA?e=QngqAX)
+- [Combining steering behaviours](https://alastaira.wordpress.com/2013/03/13/methods-for-combining-autonomous-steering-behaviours/)
+
+## Lab
+- [Try this lab test from 2019](https://github.com/skooter500/GE2-Lab-Test-2019)
+- [Submit your assignment](https://forms.office.com/Pages/ResponsePage.aspx?id=yxdjdkjpX06M7Nq8ji_V2ou3qmFXqEdGlmiD1Myl3gNUNzAyR1pVMjkwNThLUFdRWFk2SUFPQjFaOC4u)
+
 ## Week 5 - Offset Pursue, Refactoring
+
+- [Tuesday Class - Offset Pursue](https://tudublin-my.sharepoint.com/:v:/g/personal/bryan_duggan_tudublin_ie/EVNg4DhVh0NBriV2xtO0Od8BN3TfMJ3OgDsJV9QzJy8KhQ?e=rTKvl1)
+- [Wednesday Class - More Offset Pursue](https://tudublin-my.sharepoint.com/:v:/g/personal/bryan_duggan_tudublin_ie/EVY5nDzdxNFCqrpv4SB5HLcBNoBUnsb5EutGAsFWv8xsgg?e=xREtEa) 
 
 You could use the lab class to work on your assignment - get 3D models imported and flying around or here is an exercise you can do that uses the pursue behaviour we worked on last week: 
 
